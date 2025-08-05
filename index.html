@@ -164,6 +164,7 @@
 
   btn.addEventListener('click', () => {
     if (audio.paused) {
+      audio.volume = 1;
       audio.play();
       btn.textContent = '⏸ Oprește melodia';
     } else {
