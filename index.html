@@ -7,35 +7,36 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background-color: #fce4ec;
+      color: #880e4f;
       text-align: center;
-      background-color: #f4c2c2;
       padding: 2rem;
-      color: #5a2a2a;
+      margin: 0;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
     }
 
     button {
-      background-color: #d87093;
+      background-color: #d81b60;
       color: white;
       padding: 12px 24px;
       border: none;
       border-radius: 20px;
-      cursor: pointer;
       font-size: 1rem;
-      transition: background 0.3s;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     button:hover {
-      background-color: #c0557d;
+      background-color: #ad1457;
     }
 
     audio {
@@ -45,51 +46,57 @@
     footer {
       margin-top: 3rem;
       font-size: 0.9rem;
-      color: #804040;
+      color: #6d1b7b;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
     }
   </style>
 </head>
 <body>
-  <h1>Pentru sufletul meu, Razvii 💕</h1>
-  <p>Apasă butonul să pornești melodia noastră 🎶</p>
+  <div class="container">
+    <h1>Pentru sufletul meu, Razvii 💕</h1>
+    <p>Apasă butonul să pornești melodia noastră 🎶</p>
 
-  <!-- Audio -->
-  <audio id="bgMusic" loop>
-    <source src="/melodia.mp3" type="audio/mpeg" />
-    Browserul tău nu suportă audio.
-  </audio>
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+      <source src="/melodia.mp3" type="audio/mpeg" />
+      Browserul tău nu suportă audio.
+    </audio>
 
-  <!-- Buton -->
-  <button id="toggleMusic">▶️ Pornește melodia</button>
+    <!-- Buton -->
+    <button id="toggleMusic">▶️ Pornește melodia</button>
 
-  <p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
+    <p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
+    <p>Mi-e dor de zâmbetul tău, de glasul tău și de toate momentele în care inima mea bătea mai tare doar fiindcă erai acolo. 💖</p>
+    <p>Aș vrea să pot îmbrățișa timpul și să-l opresc în clipa în care suntem doar noi doi, fără griji, fără distanță.</p>
+    <p>Te iubesc mai mult decât pot spune cuvintele, dar totuși încerc... aici, pe acest mic site creat doar pentru tine. 🌹</p>
 
-  <footer>
-    Creat cu drag pentru o persoană specială 💖
-  </footer>
+    <footer>
+      Creat cu suflet pentru tine 💝
+    </footer>
+  </div>
 
   <script>
-    console.log("Script încărcat OK");
     const audio = document.getElementById('bgMusic');
     const btn = document.getElementById('toggleMusic');
 
     btn.addEventListener('click', () => {
-      console.log("Buton apăsat");
       if (audio.paused) {
         audio.volume = 1;
         audio.play()
           .then(() => {
-            console.log("Audio pornit");
             btn.textContent = '⏸️ Oprește melodia';
           })
           .catch(err => {
-            console.error("Eroare la redare:", err);
-            alert("Browserul a blocat redarea automată. Încearcă să dai play din nou.");
+            alert("Browserul a blocat redarea automată. Încearcă să mai apeși o dată.");
+            console.error("Eroare audio:", err);
           });
       } else {
         audio.pause();
         btn.textContent = '▶️ Pornește melodia';
-        console.log("Audio oprit");
       }
     });
   </script>
