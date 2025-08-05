@@ -137,19 +137,34 @@
 
     <div class="message">
       <h2>Melodia noastră 🎶</h2>
-      <p>Apasă butonul de mai jos ca să pornești melodia noastră 🎶</p>
-
       <!-- Audio -->
-      <audio id="bgMusic" loop>
-        <source src="/melodia.mp3" type="audio/mpeg" />
-        Browserul tău nu suportă audio.
-      </audio>
+<audio id="bgMusic" loop>
+  <source src="/melodia.mp3" type="audio/mpeg" />
+  Browserul tău nu suportă audio.
+</audio>
 
-      <!-- Buton -->
-      <button id="toggleMusic" style="background-color:#d87093;color:white;padding:10px 20px;border:none;border-radius:25px;cursor:pointer;font-size:1rem;margin-bottom:1rem;">▶️ Pornește melodia</button>
+<!-- Buton -->
+<button id="toggleMusic" style="background-color:#d87093;color:white;padding:10px 20px;border:none;border-radius:25px;cursor:pointer;font-size:1rem;margin-bottom:1rem;">
+  ▶️ Pornește melodia
+</button>
 
-      <p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
-    </div>
+<p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
+
+<script>
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('toggleMusic');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '⏸️ Oprește melodia';
+    } else {
+      audio.pause();
+      btn.textContent = '▶️ Pornește melodia';
+    }
+  });
+</script>
+
 
     <div id="loveMsg">Te iubesc, Razvii! 💖</div>
 
