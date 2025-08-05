@@ -37,9 +37,7 @@
     border-radius: 8px;
     position: relative;
   }
-  audio {
-    display: none;
-  }
+  /* Am scos audio ascuns */
   .footer {
     text-align: center;
     margin-top: 4rem;
@@ -135,10 +133,13 @@
       ▶️ Pornește melodia
     </button>
     <p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
-    <audio id="bgMusic" loop>
-      <source src="/melodia.mp3" type="audio/mpeg">
-      Browserul tău nu suportă redarea audio.
-    </audio>
+
+    <div id="videoContainer" style="display:none; margin-top: 1rem;">
+      <iframe width="100%" height="315" 
+        src="https://www.youtube.com/embed/71rSc6LXlSo?autoplay=1&mute=0" 
+        title="YouTube video player" frameborder="0" 
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
   </div>
 
   <div id="loveMsg">Te iubesc, Razvii! 💖</div>
@@ -154,23 +155,19 @@
 </div>
 
 <script>
-  const audio = document.getElementById("bgMusic");
   const btn = document.getElementById("toggleMusic");
+  const videoContainer = document.getElementById("videoContainer");
+  let isPlaying = false;
 
   btn.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.volume = 1;
-      audio.play()
-        .then(() => {
-          btn.textContent = "⏸️ Oprește melodia";
-        })
-        .catch(err => {
-          alert("Browserul a blocat redarea automată. Apasă din nou.");
-          console.error("Eroare:", err);
-        });
+    if (!isPlaying) {
+      videoContainer.style.display = "block";
+      btn.textContent = "⏸️ Oprește melodia";
+      isPlaying = true;
     } else {
-      audio.pause();
+      videoContainer.style.display = "none";
       btn.textContent = "▶️ Pornește melodia";
+      isPlaying = false;
     }
   });
 </script>
