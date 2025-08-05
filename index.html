@@ -2,7 +2,6 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pentru sufletul meu, Razvii ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
 <style>
@@ -36,9 +35,7 @@
     padding: 1rem 1.5rem;
     margin: 1.5rem 0;
     border-radius: 8px;
-  }
-  audio {
-    display: none; /* ascundem playerul default */
+    position: relative;
   }
   .footer {
     text-align: center;
@@ -62,7 +59,6 @@
       transform: translateY(0);
     }
   }
-
   /* Inimioare plutitoare */
   .heart {
     position: fixed;
@@ -142,17 +138,12 @@
   <div class="message">
     <h2>Melodia noastră 🎶</h2>
     <p>Apasă butonul de mai jos ca să pornești melodia noastră 🎶</p>
-
-    <!-- Player audio ascuns -->
+    <button id="toggleMusic">▶️ Pornește melodia</button>
+    <p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
     <audio id="bgMusic" loop>
       <source src="/melodia.mp3" type="audio/mpeg" />
       Browserul tău nu suportă audio.
     </audio>
-
-    <!-- Buton pornire/oprire -->
-    <button id="toggleMusic">▶️ Pornește melodia</button>
-
-    <p>O ascult și mă gândesc la tine. La noi. La cum ar fi dacă am fi acum împreună...</p>
   </div>
 
   <div id="loveMsg">Te iubesc, Razvii! 💖</div>
@@ -173,9 +164,8 @@
 
   btn.addEventListener('click', () => {
     if (audio.paused) {
-      audio.volume = 1;
       audio.play();
-      btn.textContent = '⏸️ Oprește melodia';
+      btn.textContent = '⏸ Oprește melodia';
     } else {
       audio.pause();
       btn.textContent = '▶️ Pornește melodia';
